@@ -1,0 +1,24 @@
+[package]
+name = "starwars"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+starwars-api = { path = "./generated" }
+uniffi = { version = "0.25", features = [ "cli" ] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "macros"] }
+
+[build-dependencies]
+uniffi = { version = "0.25", features = [ "build", "cli" ] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
+
+[lib]
+crate-type = ["cdylib"]
+name = "starwars"
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/uniffi-bindgen.rs"
+
